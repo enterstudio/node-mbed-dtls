@@ -49,6 +49,8 @@ class DtlsClientSocket extends stream.Duplex {
     const psk           = Buffer.isBuffer(options.psk)           ? options.psk           : false;
     const psk_ident     = Buffer.isBuffer(options.PSKIdent)      ? options.PSKIdent      : false;
 
+    this.timeoutHandle = setTimeout(this._timeout.bind(this), 10000);
+
     this.mbedSocket = new mbed.DtlsClientSocket(
       privateKey, peerPublicKey,          // Keys (Buffers or FS paths)
       ca_cert,                            // CA   (Buffer)
@@ -66,6 +68,11 @@ class DtlsClientSocket extends stream.Duplex {
     process.nextTick(() => {
       send_safety_check(this);
     });
+  }
+
+  _timeout() {
+    this.emit('error', new Error("DTLS handshake timed out"));
+    this.end();
   }
 
   bind(port, address, callback) {
@@ -122,6 +129,7 @@ class DtlsClientSocket extends stream.Duplex {
   }
 
   _handshakeComplete() {
+    clearTimeout(this.timeoutHandle);
     this.connected = true;
     this.emit('secureConnect', this);
   }
