@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/server.js",
-    "preinstall": "./downloadDeps.sh",
     "install": "node-gyp rebuild",
     "build": "node-gyp build",
     "start": "node index.js"
@@ -18,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neustar/node-mbed-dtls.git"
+    "url": "git+https://github.com/relayr/node-mbed-dtls.git"
   },
   "devDependencies": {
     "mocha": "^2.3.3",
