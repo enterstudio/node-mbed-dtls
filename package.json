@@ -1,5 +1,5 @@
 {
-  "name": "node-mbed-dtls",
+  "name": "@gpolakow/node-mbed-dtls",
   "version": "2.4.4",
   "description": "Node mbed DTLS",
   "main": "index.js",
@@ -10,6 +10,7 @@
     "start": "node index.js"
   },
   "author": "Bryce Kahle",
+  "contributors": ["Grzegorz Polaków"],
   "license": "Apache-2.0",
   "gypfile": true,
   "dependencies": {
