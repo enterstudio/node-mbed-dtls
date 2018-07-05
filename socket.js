@@ -2,7 +2,10 @@
 
 const stream = require('stream');
 
-const mbed = require('./build/Release/node_mbed_dtls');
+const binary = require('node-pre-gyp');
+const path = require('path');
+const binding_path = binary.find(path.resolve(path.join(__dirname,'./package.json')));
+const mbed = require(binding_path);
 
 const MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY = -0x7880;
 const MBEDTLS_ERR_SSL_CLIENT_RECONNECT = -0x6780;
