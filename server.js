@@ -1,11 +1,15 @@
 'use strict';
 
-var dgram = require('dgram');
-var fs = require('fs');
-var EventEmitter = require('events').EventEmitter;
+const dgram = require('dgram');
+const fs = require('fs');
+const EventEmitter = require('events').EventEmitter;
 
-var DtlsSocket = require('./socket');
-var mbed = require('./build/Release/node_mbed_dtls');
+const DtlsSocket = require('./socket');
+const binary = require('node-pre-gyp');
+const path = require('path');
+const binding_path = binary.find(path.resolve(path.join(__dirname,'./package.json')));
+const mbed = require(binding_path);
+
 
 const APPLICATION_DATA_CONTENT_TYPE = 23;
 const IP_CHANGE_CONTENT_TYPE = 254;
