@@ -40,7 +40,7 @@ v8::Local<v8::Object> SessionWrap::CreateFromContext(mbedtls_ssl_context *ssl, u
   v8::Local<v8::Function> cons = Nan::GetFunction(Nan::New(constructor)).ToLocalChecked();
 
   const unsigned argc = 0;
-  v8::Local<v8::Value> argv[argc] = {};
+  v8::Local<v8::Value> argv[1] = {}; //well, this element is unnecessary, but VC cannot create an empty array
   v8::Local<v8::Object> instance = Nan::NewInstance(cons, argc, argv).ToLocalChecked();
 
   SessionWrap *news = Nan::ObjectWrap::Unwrap<SessionWrap>(instance);
