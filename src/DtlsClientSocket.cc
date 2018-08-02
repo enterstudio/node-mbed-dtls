@@ -102,10 +102,11 @@ void DtlsClientSocket::ReceiveDataFromNode(const Nan::FunctionCallbackInfo<v8::V
   DtlsClientSocket *socket = Nan::ObjectWrap::Unwrap<DtlsClientSocket>(info.This());
   const unsigned char *recv_data = (const unsigned char *)Buffer::Data(info[0]);
   socket->store_data(recv_data, Buffer::Length(info[0]));
-
-  int len = 1284;
-  unsigned char buf[len];
-  len = socket->receive_data(buf, len);
+  
+  static const int buffer_len = 1284;
+  int len;
+  unsigned char buf[buffer_len];
+  len = socket->receive_data(buf, buffer_len);
 
   if (len > 0) {
     info.GetReturnValue().Set(Nan::CopyBuffer((char*)buf, len).ToLocalChecked());
