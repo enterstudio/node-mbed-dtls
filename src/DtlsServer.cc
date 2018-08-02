@@ -11,7 +11,7 @@
 
 using namespace node;
 
-#if defined(WIN32) || !defined(_WIN32) || !defined(__WIN32)
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
 static const unsigned __int64 epoch = ((unsigned __int64) 116444736000000000ULL);
 
 int gettimeofday(struct timeval * tp, struct timezone * tzp)

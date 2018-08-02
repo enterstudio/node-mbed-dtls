@@ -1,6 +1,6 @@
 {
   "name": "@gpolakow/node-mbed-dtls",
-  "version": "2.4.7",
+  "version": "2.4.8",
   "description": "Node mbed DTLS",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   "binary": {
     "module_name": "node_mbed_dtls",
     "module_path": "./dist",
-"host": "https://github.com/relayr/node-mbed-dtls/releases/download/",
-  "remote_path": "{version}"
+    "host": "https://github.com/relayr/node-mbed-dtls/releases/download/",
+    "remote_path": "{version}"
   }
 }
